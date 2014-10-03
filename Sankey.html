@@ -5,13 +5,23 @@
 hooktheory database</a>. The scales are normalized so that for example C -> G -> Am   is the same as A -> E -> Fm 
 (what's important for this is the progression not the key. </p>
 <p><b>Notes:</b> The database 'starts' with 29 chords. For every subsequent step the number of chords transitioned into
-keeps growing (which is expected), but for the purpose of this visualization, I only keep the original 29 chords. Also, 
+keeps growing (which is expected), but for the purpose of this visualization, I only keep the original 29 chords (I'm not quite sure I got the 4th level right as there were less "children" than at the 3rd level.. seems weird). Also, 
 since the thickness of the lines I'm plotting are in and of themselves probabilities, it's not fully correct to treat
-them the same. Very lazily, I just normalized all probabilities across each level so that it adds up to 1, I'm sure 
+them the same. Very lazily, I just normalized all probabilities across each level so that each level adds up to 1, I'm sure 
 there's a better way. Community is invited to improve! <a href="https://github.com/mexindian/Musical-chord-progressions">
 My analysis is here</a>, collaboration and/or remixing with attribution is welcome!</p>
 
 <p> Plot takes a couple seconds to load... be patient! </p>
+
+<h3>Legend:</h3>
+<ul>
+	<li> Numbers represent the normalized chords (so 1, 2, 3 = I, II, III = C, D, E (in C key)
+	<li> The stars added to the numbers denote the first, second, third, or fourth level of the 
+	progression, and are introduced so that the plot does not confuse the C on the second level
+	with that of the first.
+</ul>
+
+
 <!-- Sankey generated in R 3.1.1 by googleVis 0.5.5 package -->
 <!-- Fri Oct 03 08:23:03 2014 -->
 
