@@ -36,7 +36,7 @@ if (file.exists("chord.1stL.csv")){
 # STEP 2 get chord 1 -> 2
 
 if (file.exists("chord.2ndtL.csv")){
-  all.df <- read.csv("chord.2ndtL.csv")
+  all2.df <- read.csv("chord.2ndtL.csv")
 } else {
   all2.df <- ""
   for (i in 1:length(chords)){
@@ -57,7 +57,7 @@ if (file.exists("chord.2ndtL.csv")){
 # STEP 3 get chord 2 -> 3
 
 if (file.exists("chord.3rdL.csv")){
-  all.df <- read.csv("chord.3rdL.csv")
+  all3.df <- read.csv("chord.3rdL.csv")
 } else {
   all3.df <- ""
   for (i in 1:length(chords)){
@@ -81,7 +81,7 @@ if (file.exists("chord.3rdL.csv")){
 all4.df <- ""
 
 if (file.exists("chord.4thL.csv")){
-  all.df <- read.csv("chord.4thL.csv")
+  all4.df <- read.csv("chord.4thL.csv")
 } else {
   for (i in 1:length(chords)){
     for (j in 1:length(chords)){
@@ -128,16 +128,19 @@ length(unique(d2[,2]))
 
 # In order to identify different levels, keep adding stars to new 
 # levels (otherwise it wouldn't even draw due to suspected cyclicity)
-d2[,2] <- paste(d2[,2],"*",sep="")
+d2[,2] <- paste(d2[,2]," ",sep="")
 
 # Problem! There's 128 chords at level 3! so let's be a bit picky
 # d2 <- d2[d2[,3]>.06,] # where the cutoff is kinda guessed
 # or simply restrict d2 to original list of chords
-d2 <- d2[gsub("\\*","",d2[,2]) %in% chords,]
+d2 <- d2[gsub("\\ ","",d2[,2]) %in% chords,]
 
 
 ## Third level
-d3 <- as.data.frame(matrix(unlist(strsplit(all3.df[,2], ",")),
+# first simplify for subsequent splitting:
+all3.df.clean <- as.character(all3.df[,2])
+
+d3 <- as.data.frame(matrix(unlist(strsplit(all3.df.clean, ",")),
                            ncol=3,byrow=TRUE))
 
 #Drop first level chords for now since I don't care (and anyway can't use em)
@@ -148,15 +151,17 @@ d3$PROB <- as.numeric(all3.df[,5])
 #This is how many choords are at this level!
 length(unique(d3[,2]))
 
-d3[,1] <- paste(d3[,1],"*",sep="")
-d3[,2] <- paste(d3[,2],"**",sep="")
+d3[,1] <- paste(d3[,1]," ",sep="")
+d3[,2] <- paste(d3[,2],"  ",sep="")
 
-d3 <- d3[gsub("\\*","",d3[,1]) %in% chords,]
-d3 <- d3[gsub("\\*\\*","",d3[,2]) %in% chords,]
+d3 <- d3[gsub("\\ ","",d3[,1]) %in% chords,]
+d3 <- d3[gsub("\\ \\ ","",d3[,2]) %in% chords,]
 
 
 ## Forf level
-d4 <- as.data.frame(matrix(unlist(strsplit(all4.df[,2], ",")),
+all4.df.clean <- as.character(all4.df[,2])
+
+d4 <- as.data.frame(matrix(unlist(strsplit(all4.df.clean, ",")),
                            ncol=4,byrow=TRUE))
 
 #Drop first and second levels for now since I don't care
@@ -167,11 +172,11 @@ d4$PROB <- as.numeric(all4.df[,5])
 #This is how many choords are at this level!
 length(unique(d4[,2]))
 
-d4[,1] <- paste(d4[,1],"**",sep="")
-d4[,2] <- paste(d4[,2],"***",sep="")
+d4[,1] <- paste(d4[,1],"  ",sep="")
+d4[,2] <- paste(d4[,2],"   ",sep="")
 
-d4 <- d4[gsub("\\*\\*","",d4[,1]) %in% chords,]
-d4 <- d4[gsub("\\*\\*\\*","",d4[,2]) %in% chords,]
+d4 <- d4[gsub("\\ \\ ","",d4[,1]) %in% chords,]
+d4 <- d4[gsub("\\ \\ \\ ","",d4[,2]) %in% chords,]
 
 
 # ok, so far we're good... BUT: since we're dealing with probabilities, we 
