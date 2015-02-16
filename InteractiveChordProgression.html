@@ -1,8 +1,8 @@
 <html>
-<h1>Musical chord progressions</h1>
+<h1>Chord progressions of 25 000 songs!</h1>
 <h3>by: Amit Kohli</h3>
 <p><b> *** Plot takes a couple seconds to load... be patient! *** </b></p>
-Without further ado, here it is! Click on stuff for extra-fun (If you prefer a static image, <a href="https://github.com/mexindian/Musical-chord-progressions/blob/master/chord.prog.sankey.PNG" target="_blank">here u go</a>). 
+Click on stuff for extra-fun and please see the <a href="http://amitkohli.com/?p=246" target="_blank">my blog article</a> for explanations and notes. 
 <br><br><br>
 
 <!-- Sankey generated in R 3.1.1 by googleVis 0.5.5 package -->
@@ -39074,48 +39074,5 @@ callbacks.shift()();
   style="width: 1000; height: 1050;">
 </div>
 
-<p>This represents an visualization of all normalized chord progressions in the <a href="http://www.hooktheory.com/trends" target="_blank"> hooktheory database</a>. The scales are normalized so that for example C -> G -> Am   is the same as A -> E -> F#m (kind of... read on).</p>
-
-<p>The progressions start from the left, and progress to the right. So for example, the transition 4 -> 1 -> 5 -> 6 is one of the popular ones... and is in fact present in 327 songs! <a href="http://www.hooktheory.com/trends#node=4.1.5.6&key=rel" target="_blank">Check em out! </a> </p>
-<h3>Methods:</h3>
-<p>The database 'starts' with 29 chords. For every subsequent step the number of chords transitioned into keeps growing (which is expected), but for the purpose of this visualization, I only keep the original 29 chords... but keep in mind that there are more. Also, since the thickness of the lines I'm plotting are in and of themselves probabilities, it's not fully correct to treat them the same. Very lazily, I just normalized all probabilities across each level so that each level adds up to 1.  I'm sure there's a better way. Community is invited to improve! <a href="https://github.com/mexindian/Musical-chord-progressions" target="_blank">
-My analysis is here</a>, collaboration and/or remixing with attribution is welcome!</p>
-
-<h3>Caveats:</h3>
-<P> There are several limitations to this assessment... we are not fully sure of what the normalized numbers mean! For example, it doesn't appear that there are distinctions between minor and major chords, which is kind of a big deal.
-
-<h3>Possible Legend (thanks to HertzDevil):</h3>
-<p>The numbers are as they are represented in the Trends search string, here in EBNF metasyntax:</p>
-<ul>
-	<li>(* Roman numerals *)
-		<li><li>       numeral = "1" | "2" | "3" | "4" | "5" | "6" | "7";
-
-	<li>(* Borrowed modes, from Dorian to Locrian *)
-		<li><li>          mode = "D" | "Y" | "L" | "M" | "b" | "C";
-
-	<li>(* Figured bass for triadic and seventh chords *)
-		<li><li>     inversion = "6" | "64" | "7" | "65" | "43" | "42";
-
-	<li>(* Functions available for applied chords *)
-		<li><li>      function = "4" | "5" | "7";
-
-	<li>(* Basic chords or borrowed chords in the relative Major key *)
-		<li><li>  simple-chord = [mode], numeral, [inversion];
-
-	<li>(* Applied chords *)
-		<li><li> applied-chord = function, [inversion], "/", numeral;
-
-	<li>(* Chord progressions for both the Trends page and the API *)
-		<li><li>         chord = simple-chord | applied-chord;
-	<li>trends-progression = chord, {".", chord};
-	<li>api-progression = chord, {",", chord};
-</ul>
-
-<h3>Conclusions (or so):</h3>
-<ul>
-<li> Even though there is a gigantic variety in chords and chord progressions, progressions involving 1,4,5, and 6 are vastly overused. Nowhere is this better illustrated than by Axis of Evil's song <a href="https://www.youtube.com/watch?v=5pidokakU4I" target="_blank">"4 Four Chord Song"</a>. I would expect chord 1 to be used frequently, but I was expecting more variety.
-<li> Music is pretty!
-<li> If you're a musician, try weird progressions and upload them to hooktheory.com!
-</ul>
 
 </html>

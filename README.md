@@ -10,3 +10,5 @@ keeps growing (which is expected), but for the purpose of this visualization, I 
 since the thickness of the lines I'm plotting are in and of themselves probabilities, it's not fully correct to treat
 them the same. Very lazily, I just normalized all probabilities across each level so that it adds up to 1, I'm sure 
 there's a better way. Community is invited to improve!
+
+Check writeup <a href="http://amitkohli.com/?p=246"> here </a>
